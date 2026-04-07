@@ -7,6 +7,7 @@ Using this plugin yuo will be able to send notification alert through email alon
 
 # Add below section at the end of the command.cfg file.
 [#] vim /usr/local/nagios/et/object/command.cfg
+```
 define command{
     command_name host-email-graph
     command_line /usr/local/nagios/libexec/nagios_send_host_mail.pl \
@@ -25,9 +26,10 @@ define command{
         -f graph \
         -u
 }
-
+```
 # Modify contacts.cfg file as like below file
 [#] vim /usr/local/nagios/et/object/contacts.cfg
+```
 define contact{
         contact_name                    **sysadmin**
         use                             generic-contact
@@ -51,9 +53,10 @@ define contactgroup {
 		alias                         	System Administrators
 		members                       	**sysadmin**, zakir
 }
-
+```
 # Modify templates.cfg file as like below file
 [#] vim /usr/local/nagios/et/object/templates.cfg
+```
 define service{
         name                            important-service       
         use                             generic-service         
@@ -68,8 +71,10 @@ define service{
         notification_period             24x7                    
         register                        0
         }
+```
 # Modify linux-services.cfg file as like below file
 [#] vim /usr/local/nagios/et/object/linux-services.cfg
+```
 #Below service must by available otherwise nagios_send_host_mail.pl will not work.
 #check-host-alive service must be active if you want to send host graph with email notification
 
@@ -89,15 +94,17 @@ define service {
     check_command           check_local_load!5.0,4.0,3.0!10.0,6.0,4.0
     contact_groups          sysadmin
 }
-
+```
 ** Note: Add all the services that you want to monitor and get the rich-text based alert along with nagiosgraph.
         
 # Enable Environment Macros
 [#] vim /usr/local/nagios/etc/nagios.cfg
+```
 enable_environment_macros=1
-
+```
 # Modify nagios_send_host_mail.pl & nagios_send_service_mail.pl as like below
 [#] vim /usr/local/nagios/libexec/nagios_send_host_mail.pl
+```
 my $mail_sender        = "Nagios Monitoring <nagios\@example.com>";
 my $nagios_cgiurl      = "http://nagios.example.com/nagios/cgi-bin";
 my $test_host          = "localhost";    
@@ -107,12 +114,14 @@ my $rrd_basedir        = "/usr/local/nagiosgraph/var/rrd/";
 my $o_smtphost         = "10.0.14.40";
 my $domain             = "\@example.com"; 
 my $logofile = "/var/www/html/fm4dd/images/logo.png";
+```
 **Note: For this kind of SMTP configuration You required SMTP realy without authentication
 
 # Create logo directory for Rich-Text based notification
+```
 mkdir -p /var/www/html/fm4dd/images/
 copy logo.png into /var/www/html/fm4dd/images/ this directory
-
+```
 Finally reload the nagios service and test the alert
 
 [#] perl /usr/local/nagios/libexec/nagios_send_service_mail.pl -t -H "10.0.14.40:25"  -p "ITC PLC, Tejgoan Branch" -r "zhossain@example.com" -f graph -u
