@@ -2,7 +2,7 @@ Using this plugin you will be able to send notification alert through email alon
 
 # Installation Procedure
 
-# Install required plugin (You required epel-release as well as crb repository)
+# Install required plugin (You required epel-release & crb repository)
 
 ```bash
 [#] dnf install -y perl-Getopt-Long perl-Mail-Sendmail perl-Digest-MD5 perl-MIME-Base64 perl-File-Temp
