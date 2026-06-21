@@ -129,7 +129,7 @@ my $ngraph_cgiurl      = "http://nagios.example.com/nagios/cgi-bin/show.cgi";
 my $rrd_basedir        = "/usr/local/nagiosgraph/var/rrd/";
 my $o_smtphost         = "10.0.14.40";
 my $domain             = "\@example.com"; 
-my $logofile = "/var/www/html/fm4dd/images/logo.png";
+my $logofile           = "/var/www/html/fm4dd/images/logo.png";
 ```
 **Note: For this kind of SMTP configuration You required SMTP realy without authentication
 
