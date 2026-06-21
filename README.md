@@ -151,6 +151,5 @@ Usage: /usr/local/nagios/libexec/nagios_send_service_mail.pl [-v] [-V] [-h] [-t]
 ```
 Now check your email you will get email as like below:
 
-
-<img width="315" height="346" alt="nagiosgraph-alert" src="https://github.com/user-attachments/assets/df11f20c-c1f2-46c9-821c-5d3f802634e3" />
+![HTML Based Email](https://github.com/user-attachments/assets/df11f20c-c1f2-46c9-821c-5d3f802634e3)
 
