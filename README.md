@@ -3,11 +3,16 @@ Using this plugin yuo will be able to send notification alert through email alon
 # Installation Procedure
 
 # Install required plugin (You required epel-release as well as crb repository)
-[#] dnf install -y perl-Getopt-Long perl-Mail-Sendmail perl-Digest-MD5 perl-MIME-Base64 perl-File-Temp
 
-# Add below section at the end of the command.cfg file.
-[#] vim /usr/local/nagios/et/object/command.cfg
+```bash
+[#] dnf install -y perl-Getopt-Long perl-Mail-Sendmail perl-Digest-MD5 perl-MIME-Base64 perl-File-Temp
 ```
+
+### Add below section at the end of the command.cfg file.
+
+```bash
+[#] vim /usr/local/nagios/et/object/command.cfg
+
 define command{
     command_name host-email-graph
     command_line /usr/local/nagios/libexec/nagios_send_host_mail.pl \
@@ -27,9 +32,11 @@ define command{
         -u
 }
 ```
-# Modify contacts.cfg file as like below file
+### Modify contacts.cfg file as like below file
+
+```bash
 [#] vim /usr/local/nagios/et/object/contacts.cfg
-```
+
 define contact{
         contact_name                    **sysadmin**
         use                             generic-contact
@@ -54,9 +61,11 @@ define contactgroup {
 		members                       	**sysadmin**, zakir
 }
 ```
-# Modify templates.cfg file as like below file
+### Modify templates.cfg file as like below file
+
+```bash
 [#] vim /usr/local/nagios/et/object/templates.cfg
-```
+
 define service{
         name                            important-service       
         use                             generic-service         
@@ -72,9 +81,11 @@ define service{
         register                        0
         }
 ```
-# Modify linux-services.cfg file as like below file
+### Modify linux-services.cfg file as like below file
+
+```bash
 [#] vim /usr/local/nagios/et/object/linux-services.cfg
-```
+
 #Below service must by available otherwise nagios_send_host_mail.pl will not work.
 #check-host-alive service must be active if you want to send host graph with email notification
 
@@ -97,14 +108,19 @@ define service {
 ```
 ** Note: Add all the services that you want to monitor and get the rich-text based alert along with nagiosgraph.
         
-# Enable Environment Macros
+### Enable Environment Macros
+
+```bash
 [#] vim /usr/local/nagios/etc/nagios.cfg
-```
+
 enable_environment_macros=1
 ```
-# Modify nagios_send_host_mail.pl & nagios_send_service_mail.pl as like below
+
+### Modify nagios_send_host_mail.pl & nagios_send_service_mail.pl as like below
+
+```bash
 [#] vim /usr/local/nagios/libexec/nagios_send_host_mail.pl
-```
+
 my $mail_sender        = "Nagios Monitoring <nagios\@example.com>";
 my $nagios_cgiurl      = "http://nagios.example.com/nagios/cgi-bin";
 my $test_host          = "localhost";    
@@ -117,16 +133,17 @@ my $logofile = "/var/www/html/fm4dd/images/logo.png";
 ```
 **Note: For this kind of SMTP configuration You required SMTP realy without authentication
 
-# Create logo directory for Rich-Text based notification
-```
+### Create logo directory for Rich-Text based notification
+
+```bash
 mkdir -p /var/www/html/fm4dd/images/
 copy logo.png into /var/www/html/fm4dd/images/ this directory
-```
+
 Finally reload the nagios service and test the alert
 
 [#] perl /usr/local/nagios/libexec/nagios_send_service_mail.pl -t -H "10.0.14.40:25"  -p "ITC PLC, Tejgoan Branch" -r "zhossain@example.com" -f graph -u
 [#] perl /usr/local/nagios/libexec/nagios_send_host_mail.pl -t -H "10.0.14.40:25"  -p "ITC PLC, Tejgoan Branch" -r "zhossain@example.com" -f graph -u
-
+```
 Usage: /usr/local/nagios/libexec/nagios_send_service_mail.pl [-v] [-V] [-h] [-t] [-H <SMTP host>] [-p <customername>]
        [-r <to_recipients> or -g <to_group>] [-c <cc_recipients>] [-b <bcc_recipients>]
        [-f <text|html|multi|graph>] [-u] [-l <en|jp|fr|de|es|(or other languages if added)>]
