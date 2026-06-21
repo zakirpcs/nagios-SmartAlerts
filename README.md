@@ -1,4 +1,33 @@
-Using this plugin you will be able to send notification alert through email along with nagiosgraph.
+# Nagios SmartAlerts
+
+Rich HTML Email Notification Plugin for Nagios with Embedded NagiosGraph Charts
+
+Nagios SmartAlerts enhances native Nagios notifications by delivering professional HTML email alerts with embedded performance graphs generated from NagiosGraph.
+
+The plugin helps administrators quickly identify incidents by providing visual performance trends directly inside alert emails, reducing troubleshooting time and improving operational awareness.
+
+## Features
+
+### Rich HTML Notifications
+Generate professionally formatted email alerts instead of plain-text notifications.
+
+### Embedded Performance Graphs
+Include NagiosGraph charts directly within host and service alerts.
+
+### Team-Based Alerting
+Support multiple recipients using To, CC, and BCC delivery methods.
+
+### Corporate Branding
+Customize emails with organization logos and company information.
+
+### SMTP Relay Support
+Integrate with internal mail relays for secure notification delivery.
+
+### Multi-Language Ready
+Designed to support multiple languages and localization requirements.
+
+### Validation Mode
+Built-in testing capability for verifying notification functionality.
 
 # Installation Procedure
 
