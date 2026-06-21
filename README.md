@@ -144,10 +144,11 @@ Finally reload the nagios service and test the alert
 [#] perl /usr/local/nagios/libexec/nagios_send_service_mail.pl -t -H "10.0.14.40:25"  -p "ITC PLC, Tejgoan Branch" -r "zhossain@example.com" -f graph -u
 [#] perl /usr/local/nagios/libexec/nagios_send_host_mail.pl -t -H "10.0.14.40:25"  -p "ITC PLC, Tejgoan Branch" -r "zhossain@example.com" -f graph -u
 ```
+```bash
 Usage: /usr/local/nagios/libexec/nagios_send_service_mail.pl [-v] [-V] [-h] [-t] [-H <SMTP host>] [-p <customername>]
        [-r <to_recipients> or -g <to_group>] [-c <cc_recipients>] [-b <bcc_recipients>]
        [-f <text|html|multi|graph>] [-u] [-l <en|jp|fr|de|es|(or other languages if added)>]
-
+```
 Now check your email you will get email as like below:
 
 
