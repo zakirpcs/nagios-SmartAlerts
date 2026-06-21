@@ -1,4 +1,4 @@
-Using this plugin yuo will be able to send notification alert through email along with nagiosgraph.
+Using this plugin you will be able to send notification alert through email along with nagiosgraph.
 
 # Installation Procedure
 
